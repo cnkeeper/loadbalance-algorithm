@@ -82,7 +82,7 @@ public abstract class AbstractConsistentHashLoadBalanceHandler<N extends Distrib
             if (!circleNodes.containsKey(hash)) {
                 //未命中，寻找顺时针第一个临近节点
                 Map.Entry<Long, N> firstMeetNode = circleNodes.ceilingEntry(hash);
-                firstMeetNode = (null==firstMeetNode) ? firstMeetNode : tailMap.firstEntry();
+                firstMeetNode = (null==firstMeetNode) ? firstMeetNode : circleNodes.firstEntry();
                 return firstMeetNode.getEntry();
             }
 
